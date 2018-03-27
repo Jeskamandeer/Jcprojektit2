@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.ComboBoxChooser?>
+<?import fi.jyu.mit.fxgui.ListChooser?>
+<?import fi.jyu.mit.fxgui.StringGrid?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxKuikanLava.KuikanLavaGUIController">
+   <top>
+      <MenuBar prefHeight="27.0" prefWidth="294.0" BorderPane.alignment="CENTER">
+        <menus>
+            <Menu mnemonicParsing="false" text="Tiedosto">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handlePoista" text="Poista" />
+                  <MenuItem mnemonicParsing="false" onAction="#handlePoistaEsiintyja" text="Poista Esiintyjä" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Muokkaa">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleLisaaUusi" text="Lisää uusi" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMuokkaa" text="Muokkaa vanhaa" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Apua">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleTietoa" text="Tietoa" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleApua" text="Apua" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.32127192982456143" BorderPane.alignment="CENTER">
+         <items>
+            <BorderPane>
+               <top>
+                  <VBox BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="TOP_CENTER" maxWidth="300.0" text="Hakuehto" />
+                        <ComboBoxChooser fx:id="cbKentat" prefWidth="300.0" rivit="Esiintyjä &#10;Päivä" />
+                        <TextField fx:id="hakuehto" onAction="#handleHakuehto" />
+                     </children>
+                  </VBox>
+               </top>
+               <center>
+                  <ListChooser fx:id="chooserPaivat" rivit="1.1.2016&#10;15.3.2016&#10;20.4.2016&#10;30.5.2016&#10;6.6.2017&#10;9.6.2017&#10;25.6.2017&#10;30.6.2017&#10;&#10;" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane>
+               <center>
+                  <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                    <tabs>
+                      <Tab text="Liput">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="423.0">
+                                 <children>
+                                    <GridPane fx:id="gridPaiva" layoutX="18.0" layoutY="6.0" prefHeight="431.0" prefWidth="358.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="102.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="98.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="textEtuHinta" text="13" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="textHinta" text="15" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label text="Etuliput" GridPane.rowIndex="1" />
+                                          <Label text="Normaali Liput" GridPane.rowIndex="2" />
+                                          <Label text="Pohjakassa" GridPane.rowIndex="3" />
+                                          <Label text="Yhteensä" GridPane.rowIndex="4" />
+                                          <TextField fx:id="textEtuliput" text="100" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <TextField fx:id="textLiput" text="textLiput" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                          <TextField fx:id="textKplYht" text="260" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                          <Label prefHeight="4.0" prefWidth="59.0" text="Hinta" GridPane.columnIndex="1" />
+                                          <Label text="Yhteensä" GridPane.columnIndex="3" />
+                                          <Label text="Kappaletta" GridPane.columnIndex="2" />
+                                          <TextField fx:id="textEtuYht" text="1300" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <TextField fx:id="textNormaaliYht" text="2250" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                          <TextField fx:id="textPohjakassa" text="600" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                          <TextField fx:id="textYhteensa" text="1550" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Kioski">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="106.0" layoutY="81.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                    </GridPane>
+                                    <GridPane layoutX="6.0" layoutY="14.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Tulot" />
+                                          <Label text="Menot" GridPane.rowIndex="1" />
+                                          <Label text="Yhteensä" GridPane.rowIndex="2" />
+                                          <TextField fx:id="textKioskiTulot" GridPane.columnIndex="1" />
+                                          <TextField fx:id="textKioskiMenot" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="textKioskiYht" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                       </children>
+                                    </GridPane>
+                                 </children></AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Baari">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="77.0" layoutY="71.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                    </GridPane>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="textBaariYht" GridPane.columnIndex="1" />
+                                          <TextField fx:id="textBaariMenot" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="textBaariYht" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label text="Menot" GridPane.rowIndex="1" />
+                                          <Label text="Tulot" />
+                                          <Label text="Yhteensä" GridPane.rowIndex="2" />
+                                       </children>
+                                    </GridPane>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </center>
+            </BorderPane>
+         </items>
+      </SplitPane>
+   </center>
+   <right>
+      <BorderPane prefHeight="262.0" prefWidth="272.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Esiintyjät" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <StringGrid fx:id="tableEsiintyjat" prefHeight="400.0" prefWidth="131.0" rivit="Artisti| Huomioitavaa&#10;Yö&#10;Riki Sorsa&#10;&#10;" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </right>
+   <bottom>
+      <BorderPane BorderPane.alignment="CENTER">
+         <right>
+            <HBox spacing="50.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleYhteenveto" text="Yhteenveto">
+                     <tooltip>
+                        <Tooltip text="Yhteenveto kaikista tiedoista" />
+                     </tooltip>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleLisaaEsiintyja" text="Lisää esiintyjä">
+                     <tooltip>
+                        <Tooltip text="Lisää uusi tieto" />
+                     </tooltip>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" right="50.0" top="5.0" />
+               </BorderPane.margin>
+            </HBox>
+         </right>
+         <left>
+            <HBox spacing="50.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna">
+                     <tooltip>
+                        <Tooltip text="Lisää uusi tieto" />
+                     </tooltip>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleLisaaUusi" text="Lisää uusi">
+                     <tooltip>
+                        <Tooltip text="Lisää uusi tieto" />
+                     </tooltip>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="5.0" />
+               </BorderPane.margin>
+            </HBox>
+         </left>
+         <center>
+            <Label fx:id="labelVirhe" text="Label" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </bottom>
+</BorderPane>
